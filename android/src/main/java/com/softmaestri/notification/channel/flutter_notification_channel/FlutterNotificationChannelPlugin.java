@@ -55,19 +55,6 @@ public class FlutterNotificationChannelPlugin implements FlutterPlugin, MethodCa
           boolean enableSound = (boolean)call.argument("enableSound");
           boolean showBadge = (boolean)call.argument("showBadge");
           String customSound = call.argument("customSound");
-          Log.i(TAG, "Channel Settings: \n" +
-            "id: " + id + "\n" +
-            "name: " + name + "\n" +
-            "description: " + description + "\n" +
-            "importance: " + importance + "\n" +
-            "visibility: " + visibility + "\n" +
-            "allowBubbles: " + allowBubbles + "\n" +
-            "showBadge: " + showBadge + "\n" +
-            "enableVibration: " + enableVibration + "\n" +
-            "enableSound: " + enableSound + "\n" +
-            "customSound: " + customSound
-          );
-
           NotificationChannel notificationChannel =
                   new NotificationChannel(id, name, importance);
           notificationChannel.setDescription(description);
@@ -87,7 +74,7 @@ public class FlutterNotificationChannelPlugin implements FlutterPlugin, MethodCa
             if (customSound == null) {
               uri = Settings.System.DEFAULT_NOTIFICATION_URI;
             } else {
-              uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"+ context.getPackageName() + "/raw/" + customSound);
+              uri = Uri.parse(context.getApplicationContext().ContentResolver.SCHEME_ANDROID_RESOURCE + "://"+ context.getPackageName() + "/raw/" + customSound);
             }
             Log.i(TAG, "Sound uri: " + uri.toString() + " \n");
             notificationChannel.setSound(uri, attributes);
