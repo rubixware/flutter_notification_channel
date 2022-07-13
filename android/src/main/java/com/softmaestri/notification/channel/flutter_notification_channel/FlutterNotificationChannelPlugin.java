@@ -86,7 +86,7 @@ public class FlutterNotificationChannelPlugin implements FlutterPlugin, MethodCa
             if (customSound == null) {
               uri = Settings.System.DEFAULT_NOTIFICATION_URI;
             } else {
-              uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"+ getApplicationContext().getPackageName() + "/raw/" + customSound);
+              uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"+ context.getPackageName() + "/raw/" + customSound);
             }
             Log.i(TAG, "Sound uri: " + uri.toString() + " \n");
             notificationChannel.setSound(uri, attributes);
