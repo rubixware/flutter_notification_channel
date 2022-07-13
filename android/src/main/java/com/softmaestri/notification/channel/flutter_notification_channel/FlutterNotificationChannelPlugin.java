@@ -69,6 +69,7 @@ public class FlutterNotificationChannelPlugin implements FlutterPlugin, MethodCa
                   new NotificationChannel(id, name, importance);
           notificationChannel.setDescription(description);
           notificationChannel.setShowBadge(showBadge);
+          notificationChannel.setBypassDnd(true);
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             notificationChannel.setAllowBubbles(allowBubbles);
           }
